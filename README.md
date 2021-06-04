@@ -1,4 +1,4 @@
-# srsRAN-demo
+# srsran-magmacore
 
 [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/shubhamtatvamasi/srsran-demo)](https://hub.docker.com/r/shubhamtatvamasi/srsran-demo)
 [![Docker Image Version (latest semver)](https://img.shields.io/docker/v/shubhamtatvamasi/srsran-demo?sort=semver)](https://hub.docker.com/r/shubhamtatvamasi/srsran-demo)
@@ -55,4 +55,6 @@ iperf3 -s
 ```
 
 iperf3 -c 192.168.128.12
+
+Credits to ShubhamTatvamasi for showing this way of testing magma 4g core
 
