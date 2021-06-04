@@ -29,6 +29,13 @@ ping 192.168.128.12
 ```
 ---
 
+**Magma Side Configurations:**
+1. Add APN as shown below in NMS
+![image](https://user-images.githubusercontent.com/23480027/120811811-05d54400-c56a-11eb-969a-f3fbc9e07fa6.png)
+
+2. Add a UE Subscriber as shown below in NMS
+![image](https://user-images.githubusercontent.com/23480027/120812236-6fede900-c56a-11eb-9ed5-5282ea5157c8.png)
+
 ## Work in progress
 
 start server:
