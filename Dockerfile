@@ -79,3 +79,8 @@ RUN mkdir -p /etc/srsran && \
     cp {} /etc/srsran/${z}' \;
 
 WORKDIR /etc/srsran
+
+RUN sed -i "s/tac = 0x0007/tac = 0x0001/g" rr.conf
+RUN sed -i "s/#apn = internetinternet/apn = internet/g" ue.conf
+
+CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"

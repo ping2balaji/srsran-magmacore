@@ -1,8 +1,8 @@
-version: "3.9"
+version: "3.3"
 
 services:
   srsenb:
-    image: shubhamtatvamasi/srsran-demo
+    image: ping2balaji/srsran-magmacore
     container_name: srsenb
     network_mode: host
     cap_add:
@@ -16,7 +16,7 @@ services:
       - --rf.device_args="fail_on_disconnect=true,tx_port=tcp://*:2000,rx_port=tcp://localhost:2001,id=enb,base_srate=23.04e6"
 
   srsue:
-    image: shubhamtatvamasi/srsran-demo
+    image: ping2balaji/srsran-magmacore
     container_name: srsue
     network_mode: host
     depends_on: 
@@ -30,5 +30,7 @@ services:
       - srsue
       - --usim.algo=milenage
       - --usim.opc=63BFA50EE6523365FF14C1F45F88737D
+      - --usim.k=00112233445566778899aabbccddeeff
+      - --usim.imsi=001010123456789
       - --rf.device_name=zmq
       - --rf.device_args="tx_port=tcp://*:2001,rx_port=tcp://localhost:2000,id=ue,base_srate=23.04e6"
