@@ -8,16 +8,27 @@
 [![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/shubhamtatvamasi/srsran-demo)](https://hub.docker.com/r/shubhamtatvamasi/srsran-demo)
 
 
+Steps:
+1. Clone this repo
+2. Open docker-compose.yaml and punch in the correct MME address of your AGW in the following line:
+   "--enb.mme_addr=192.168.60.142"
 Get MME IP address from your AGW:
 ```bash
 ifconfig eth1 | grep 'inet ' | awk '{print $2}'
 ```
-
+3. Also update the enodeb(srsenb) ip address in the following lines:
+     "- --enb.gtp_bind_addr=192.168.60.1
+      - --enb.s1c_bind_addr=192.168.60.1"
 Get **gtp_br0** IP of AGW:
 ```bash
 ifconfig gtp_br0 | grep 'inet ' | awk '{print $2}'
 ```
-
+4. Make sure to scroll down to check and configure required settings in magma side.
+5. Start srsenb and srsue using following command:
+   "docker-compose up"
+   This will bring up both srsenb and srsue docker containers and start establishing the call.
+   
+6. For data traffic testing
 For testing download, ping **gtp_br0** network of AGW from UE:
 ```bash
 docker exec -it srsue ping 192.168.128.1
