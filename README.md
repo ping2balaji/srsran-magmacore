@@ -27,18 +27,14 @@ ifconfig gtp_br0 | grep 'inet ' | awk '{print $2}'
 5. Start srsenb and srsue using following command:
    "docker-compose up"
    This will bring up both srsenb and srsue docker containers and start establishing the call.
-   
-6. For data traffic testing
-For testing download, ping **gtp_br0** network of AGW from UE:
-```bash
-docker exec -it srsue ping 192.168.128.1
-```
-
-For testing upload, ping Network attached IP of UE from AGW:
-```bash
-ping 192.168.128.12
-```
----
+   On successful attach to magma core we should see some logs like below displaying allocated ue up address:
+   ```bash
+   srsue     | RRC Connected
+   srsue     | Random Access Complete.     c-rnti=0x47, ta=0
+   srsue     | Network attach successful. IP: 192.168.128.16
+   srsenb    | User 0x47 connected
+   srsue     | E
+   ```
 
 **Magma Side Configurations:**
 1. Add APN as shown below in NMS
@@ -56,5 +52,18 @@ iperf3 -s
 
 iperf3 -c 192.168.128.12
 
-Credits to ShubhamTatvamasi for showing this way of testing magma 4g core
+For data traffic testing 
+For testing download, ping **gtp_br0** network of AGW from UE:
+```bash
+docker exec -it srsue ping 192.168.128.1
+```
+
+For testing upload, ping Network attached IP of UE from AGW:
+```bash
+ping 192.168.128.12
+```
+---
+
+## Credits 
+To ShubhamTatvamasi for showing this way of testing magma 4g core
 
